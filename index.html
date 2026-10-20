@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#134e4a">
+  <title>প্রোডাক্ট মেকিং মেথড</title>
+  <link rel="icon" href="spm.ico">
+  <style>
+    :root { --ink:#17212b; --muted:#64748b; --brand:#0f766e; --brand-dark:#115e59; --paper:#fff; --surface:#f1f8f7; --line:#d7e5e3; --shadow:0 12px 30px rgba(15,118,110,.11); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:linear-gradient(145deg,#ecf8f6 0%,#f8fbfc 45%,#eef5ff 100%); font-family:"Noto Sans Bengali", "Hind Siliguri", system-ui, sans-serif; line-height:1.55; }
+    .page { width:min(100%,1180px); margin:auto; padding:clamp(16px,4vw,48px); }
+    .hero { color:white; background:linear-gradient(120deg,#134e4a,#0f766e); border-radius:24px; padding:clamp(24px,5vw,56px); box-shadow:var(--shadow); }
+    h1 { font-size:clamp(1.8rem,5vw,3.25rem); margin:0; line-height:1.2; }
+    .hero p { margin:12px 0 0; opacity:.88; font-size:clamp(.94rem,2.5vw,1.1rem); }
+    main { margin-top:clamp(20px,4vw,36px); }
+    section { margin-top:32px; }
+    h2 { font-size:clamp(1.3rem,3.8vw,2rem); margin:0 0 14px; color:#134e4a; }
+    
+    .table-wrap { width:100%; overflow-x:auto; border-radius:18px; box-shadow:var(--shadow); background:var(--paper); }
+    table { width:100%; border-collapse:collapse; }
+    caption { caption-side:top; text-align:left; padding:18px 22px 10px; font-size:1.08rem; font-weight:800; color:#134e4a; }
+    th,td { padding:16px 22px; text-align:left; border-bottom:1px solid var(--line); vertical-align:middle; }
+    th { color:var(--muted); background:#f8fcfc; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .step { font-weight:800; color:var(--brand-dark); }
+    
+    a.action, button.copy { appearance:none; display:inline-flex; justify-content:center; align-items:center; min-height:42px; border:0; border-radius:10px; padding:9px 15px; color:white; background:var(--brand); font:inherit; font-weight:700; text-decoration:none; cursor:pointer; transition:background .2s,transform .2s; }
+    a.action:hover,button.copy:hover { background:var(--brand-dark); transform:translateY(-1px); }
+    
+    .prompt-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+    .prompt { display:flex; flex-direction:column; min-height:160px; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--paper); box-shadow:0 5px 16px rgba(15,118,110,.06); }
+    .prompt h3 { margin:0; font-size:1.06rem; color:#134e4a; }
+    .prompt textarea { width:100%; min-height:72px; resize:vertical; margin:12px 0; padding:10px; border:1px dashed #b5cbca; border-radius:9px; outline:none; color:var(--ink); background:#fbfefe; font:inherit; }
+    .prompt textarea:focus { border-style:solid; border-color:var(--brand); }
+    button.copy { margin-top:auto; align-self:flex-start; font-size:.9rem; }
+    
+    .note { padding:18px 20px; border-left:4px solid var(--brand); border-radius:0 14px 14px 0; background:#e9f7f5; box-shadow:0 4px 12px rgba(15,118,110,.04); }
+    footer { padding:28px 0 4px; color:var(--muted); font-size:.9rem; text-align:center; }
+
+    /* Mobile Responsive Card Transformation */
+    @media (max-width: 600px) { 
+      .page { padding: 12px; } 
+      .hero { border-radius: 18px; } 
+      section { margin-top: 26px; } 
+      
+      .table-wrap { background: transparent; box-shadow: none; overflow: visible; }
+      table, thead, tbody, th, td, tr { display: block; width: 100%; }
+      thead { display: none; } /* Hide table headers on mobile */
+      
+      tr { 
+        background: var(--paper); 
+        border: 1px solid var(--line); 
+        border-radius: 14px; 
+        margin-bottom: 12px; 
+        padding: 8px 16px; 
+        box-shadow: 0 4px 12px rgba(15,118,110,.06); 
+      }
+      
+      td { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 12px 0; 
+        border-bottom: 1px solid var(--line); 
+        text-align: right;
+      }
+      
+      td:last-child { border-bottom: none; }
+      
+      /* Inject responsive labels via data-label attributes */
+      td::before { 
+        content: attr(data-label); 
+        font-weight: 700; 
+        color: var(--muted); 
+        font-size: 0.82rem; 
+        text-transform: uppercase; 
+        text-align: left; 
+        margin-right: 12px; 
+      }
+      
+      .prompt-grid { grid-template-columns: 1fr; } 
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>প্রোডাক্ট মেকিং মেথড</h1>
+      <p>মোবাইল-রেসপনসিভ টেমপ্লেট</p>
+    </header>
+    <main>
+      <section>
+        <h2>আমার প্রোডাক্ট মেকিং পদ্ধতি:</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>প্রোডাক্ট মেকিং স্টেপস</caption>
+            <thead>
+              <tr><th>Step</th><th>Title</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="step" data-label="Step">Step#1:</td>
+                <td data-label="Title">Sample Point</td>
+                <td data-label="Action"><a class="action" href="https://spmhqo.github.io/pp/sample-points.html" target="_blank" rel="noopener">Sample Points</a></td>
+              </tr>
+              <tr>
+                <td class="step" data-label="Step">Step#2:</td>
+                <td data-label="Title">Generate Keyword</td>
+                <td data-label="Action"><a class="action" href="https://spmhqo.github.io/pp/find-buyer-keywords.html" target="_blank" rel="noopener">Generate Keyword</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>আমার ফাইন্ড ইওর বাইয়ার পদ্ধতি:</h2>
+        <div class="note">৬ কম্পোনেন্টস<br>৬ কম্পোনেন্টস ফলোআপ<br>হিউম্যান প্রবলেম ডিসকাভারি</div>
+      </section>
+      
+      <section>
+        <h2>রেডিট নোটবুক এল এম</h2>
+        <div class="note">(রিসেন্ট পোস্ট + বুলেট লিস্ট)<br><br>কনটিনিউয়েসন<br><br>১, রিডার্স কোয়েশ্চেন<br>২, ব্লগপোস্ট / হট টেকস মিডিয়াম + সোমিপো<br><br>ন্যাচারাল কনটেন্ট<br>কনটেন্ট থেকে কোটেসন নিয়ে সোমিপো</div>
+      </section>
+      
+      <section>
+        <h2>আমার বই লেখার পদ্ধতি</h2>
+        <div class="note">তিনটি টুল:<br>১, বইয়ের নামকরণ<br>২, বইয়ের ওপেনিং থেকে অধ্যায় নির্বাচন<br>৩, জিপিটি - বুকস প্ল্যান</div>
+      </section>
+      
+      <section>
+        <h2>প্রোমোশনের প্রথম ব্যাচ</h2>
+        <div class="note">ChatGPT Project: ICT</div>
+      </section>
+    </main>
+    <footer>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.</footer>
+  </div>
+  <script>
+    document.querySelectorAll('.copy').forEach(function (button) {
+      button.addEventListener('click', async function () {
+        var text = button.closest('.prompt').querySelector('textarea').value;
+        try { await navigator.clipboard.writeText(text); button.textContent = 'Copied!'; }
+        catch (error) { button.textContent = 'Copy failed'; }
+        setTimeout(function () { button.textContent = 'Copy Prompt'; }, 1600);
+      });
+    });
+  </script>
+</body>
+</html>
